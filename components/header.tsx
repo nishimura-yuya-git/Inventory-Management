@@ -1,23 +1,22 @@
 "use client"
 
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { Menu } from "lucide-react"
 
-export function Header() {
-  const [selectedStoreCount] = useState(2) // 選択されている店舗数
+interface HeaderProps {
+  onMenuClick?: () => void
+}
 
+export function Header({ onMenuClick }: HeaderProps) {
   return (
-    <header className="bg-white border-b border-gray-200 px-4 py-2">
+    <header className="bg-white border-b border-gray-200 px-4 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800">
-            <ChevronDown size={16} />
-            <span>店舗選択</span>
-            {selectedStoreCount > 0 && (
-              <span className="bg-gray-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {selectedStoreCount}
-              </span>
-            )}
+          {/* モバイルハンバーガーメニュー */}
+          <button
+            onClick={onMenuClick}
+            className="lg:hidden p-2 -ml-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <Menu size={24} strokeWidth={2.5} />
           </button>
         </div>
       </div>
