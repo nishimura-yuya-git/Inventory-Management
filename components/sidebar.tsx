@@ -102,8 +102,8 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
           <div>
             <button
               onClick={() => toggleExpand(subItem.label)}
-              className={`w-full flex items-center justify-between px-6 py-3 text-sm text-white/80 hover:bg-[#00406b] transition-colors ${
-                expandedItems.includes(subItem.label) ? "bg-[#002a47]" : ""
+              className={`w-full flex items-center justify-between px-6 py-3 text-sm text-white/80 hover:bg-[#F4A460] transition-colors ${
+                expandedItems.includes(subItem.label) ? "bg-[#CD853F]" : ""
               }`}
               style={{ paddingLeft: `${(level + 1) * 20}px` }}
             >
@@ -115,13 +115,13 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
               )}
             </button>
             {expandedItems.includes(subItem.label) && (
-              <div className="bg-[#00223b]">
+              <div className="bg-[#A0522D]">
                 {subItem.subItems.map((item, idx) => (
                   <a
                     key={idx}
                     href={item.href}
                     onClick={onMobileClose}
-                    className="block px-6 py-3 text-sm text-white/70 hover:bg-[#00406b] hover:text-white transition-colors"
+                    className="block px-6 py-3 text-sm text-white/70 hover:bg-[#F4A460] hover:text-white transition-colors"
                     style={{ paddingLeft: `${(level + 2) * 20}px` }}
                   >
                     {item.label}
@@ -134,7 +134,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
           <a
             href={subItem.href}
             onClick={onMobileClose}
-            className="flex items-center justify-between px-6 py-3 text-sm text-white/80 hover:bg-[#00406b] hover:text-white transition-colors"
+            className="flex items-center justify-between px-6 py-3 text-sm text-white/80 hover:bg-[#F4A460] hover:text-white transition-colors"
             style={{ paddingLeft: `${(level + 1) * 20}px` }}
           >
             <span>{subItem.label}</span>
@@ -147,15 +147,21 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
 
   const sidebarContent = (
     <>
-      {/* ロゴセクション（デスクトップのみ） */}
-      <div className="hidden lg:block px-6 py-6 border-b border-[#00406b]/50">
-        <div className={`flex items-center justify-center transition-all duration-300 ${collapsed ? "px-2" : "px-4"}`}>
+      {/* ロゴエリア（デスクトップのみ） */}
+      <div className="hidden lg:flex items-center justify-center px-4 py-6 border-b border-[#F4A460]/30">
+        {collapsed ? (
           <img
-            src="/ma_logo.webp"
-            alt="Mobility Agent Logo"
-            className={`object-contain transition-all duration-300 ${collapsed ? "w-12 h-12" : "w-full max-w-[180px] h-auto"}`}
+            src="https://mobility-agent.com/wp-content/themes/mobility_agent/img/ma_logo.webp"
+            alt="モビリティエージェント"
+            className="h-10 w-10 object-contain"
           />
-        </div>
+        ) : (
+          <img
+            src="https://mobility-agent.com/wp-content/themes/mobility_agent/img/ma_logo.webp"
+            alt="モビリティエージェント"
+            className="h-12 w-auto object-contain max-w-[200px]"
+          />
+        )}
       </div>
       <nav className="flex-1 py-4 overflow-y-auto">
         {menuItems.map((item, index) => (
@@ -164,9 +170,9 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
               <div>
                 <button
                   onClick={() => toggleExpand(item.label)}
-                  className={`w-full flex items-center gap-4 px-6 py-4 hover:bg-[#00406b] transition-colors border-l-4 ${
+                  className={`w-full flex items-center gap-4 px-6 py-4 hover:bg-[#F4A460] transition-colors border-l-4 ${
                     expandedItems.includes(item.label)
-                      ? "bg-[#002a47] border-blue-400 text-white"
+                      ? "bg-[#CD853F] border-orange-400 text-white"
                       : "border-transparent text-white/90"
                   }`}
                 >
@@ -183,14 +189,14 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
                   )}
                 </button>
                 {!collapsed && expandedItems.includes(item.label) && (
-                  <div className="bg-[#002a47]">{renderSubItems(item.subItems)}</div>
+                  <div className="bg-[#CD853F]">{renderSubItems(item.subItems)}</div>
                 )}
               </div>
             ) : (
               <a
                 href={item.href}
                 onClick={onMobileClose}
-                className="flex items-center gap-4 px-6 py-4 hover:bg-[#00406b] transition-colors border-l-4 border-transparent hover:border-blue-400"
+                className="flex items-center gap-4 px-6 py-4 hover:bg-[#F4A460] transition-colors border-l-4 border-transparent hover:border-orange-400"
               >
                 <IconWrapper Icon={item.icon} size={22} />
                 {!collapsed && (
@@ -206,7 +212,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
       </nav>
       <button
         onClick={onToggle}
-        className="hidden lg:flex p-5 hover:bg-[#00406b] transition-colors border-t border-[#00406b]/50 justify-center"
+        className="hidden lg:flex p-5 hover:bg-[#F4A460] transition-colors border-t border-[#F4A460]/50 justify-center"
       >
         <ChevronLeft size={24} strokeWidth={2.5} className={`transition-transform ${collapsed ? "rotate-180" : ""}`} />
       </button>
@@ -217,7 +223,7 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
     <>
       {/* デスクトップサイドバー */}
       <aside
-        className={`hidden lg:flex bg-[#003355] text-white flex-col transition-all duration-300 shadow-xl z-10 ${
+        className={`hidden lg:flex bg-[#D2691E] text-white flex-col transition-all duration-300 shadow-xl z-10 ${
           collapsed ? "w-20" : "w-72"
         }`}
       >
@@ -234,20 +240,20 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
 
       {/* モバイルサイドバー */}
       <aside
-        className={`lg:hidden fixed top-0 left-0 h-full w-72 bg-[#003355] text-white flex flex-col shadow-xl z-50 transform transition-transform duration-300 ${
+        className={`lg:hidden fixed top-0 left-0 h-full w-72 bg-[#D2691E] text-white flex flex-col shadow-xl z-50 transform transition-transform duration-300 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* モバイルヘッダー */}
-        <div className="flex items-center justify-between p-4 border-b border-[#00406b]/50">
+        <div className="flex items-center justify-between p-4 border-b border-[#F4A460]/50">
           <img
-            src="/ma_logo.webp"
-            alt="Mobility Agent Logo"
+            src="https://mobility-agent.com/wp-content/themes/mobility_agent/img/ma_logo.webp"
+            alt="モビリティエージェント"
             className="h-8 w-auto object-contain"
           />
           <button
             onClick={onMobileClose}
-            className="p-2 hover:bg-[#00406b] rounded-lg transition-colors"
+            className="p-2 hover:bg-[#F4A460] rounded-lg transition-colors"
           >
             <X size={24} strokeWidth={2.5} />
           </button>

@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
+  --font-sans: var(--font-zen-kaku-gothic-new), "Zen Kaku Gothic New", "Noto Sans JP", "ヒラギノ明朝 ProN W3", HiraMinProN-W3, HG明朝E, "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: oklch(0.97 0 0);
   --color-foreground: oklch(0.145 0 0);
@@ -48,8 +48,14 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    font-family: var(--font-zen-kaku-gothic-new), "Zen Kaku Gothic New", "Noto Sans JP", "ヒラギノ明朝 ProN W3", HiraMinProN-W3, HG明朝E, "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif !important;
+    font-weight: 500;
+  }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-zen-kaku-gothic-new), "Zen Kaku Gothic New", "Noto Sans JP", "ヒラギノ明朝 ProN W3", HiraMinProN-W3, HG明朝E, "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif !important;
+    font-weight: 500 !important;
   }
   
   /* Next.js開発ツールのアイコンを非表示 */
