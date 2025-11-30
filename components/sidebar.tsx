@@ -147,6 +147,16 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
 
   const sidebarContent = (
     <>
+      {/* ロゴセクション（デスクトップのみ） */}
+      <div className="hidden lg:block px-6 py-6 border-b border-[#00406b]/50">
+        <div className={`flex items-center justify-center transition-all duration-300 ${collapsed ? "px-2" : "px-4"}`}>
+          <img
+            src="/ma_logo.webp"
+            alt="Mobility Agent Logo"
+            className={`object-contain transition-all duration-300 ${collapsed ? "w-12 h-12" : "w-full max-w-[180px] h-auto"}`}
+          />
+        </div>
+      </div>
       <nav className="flex-1 py-4 overflow-y-auto">
         {menuItems.map((item, index) => (
           <div key={index}>
@@ -230,7 +240,11 @@ export function Sidebar({ collapsed, onToggle, mobileOpen = false, onMobileClose
       >
         {/* モバイルヘッダー */}
         <div className="flex items-center justify-between p-4 border-b border-[#00406b]/50">
-          <span className="text-lg font-semibold">メニュー</span>
+          <img
+            src="/ma_logo.webp"
+            alt="Mobility Agent Logo"
+            className="h-8 w-auto object-contain"
+          />
           <button
             onClick={onMobileClose}
             className="p-2 hover:bg-[#00406b] rounded-lg transition-colors"
